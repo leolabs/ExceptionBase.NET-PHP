@@ -161,7 +161,7 @@
 					}
 				}
 				
-				if ($_SESSION["login"]){header('Location: /index.php');}
+				if ($_SESSION["login"]){header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/index.php");}
 			?>
 			<form method="post" action="login.php">
 				<input type="text" placeholder="Benutzername" name="username" class="form-wm-qt">
