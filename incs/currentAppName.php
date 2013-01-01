@@ -1,5 +1,5 @@
 <?php
-	$appid = $_GET["appid"];
+	$appid = mysql_real_escape_string($_GET["appid"]);
 	$result = mysql_query("SELECT * FROM applications WHERE `ID`='$appid'") or die(mysql_error());
 	$app = "";
 	

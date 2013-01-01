@@ -3,12 +3,12 @@
 	echo "<tr class=\"head\"><th>ID</th><th width=\"86\">Datum</th><th>Fehler</th><th>Version</th></tr>";
 
 	if(isset($_GET["fixed"])){
-		$fixed = $_GET["fixed"];
+		$fixed = mysql_real_escape_string($_GET["fixed"]);
 	}else{
 		$fixed = "0";
 	}
 	
-	$appid = $_GET["appid"];
+	$appid = mysql_real_escape_string($_GET["appid"]);
 	
 	$result = mysql_query("SELECT * FROM exceptions WHERE `Fixed`='$fixed' AND `App`='$appid'") or die(mysql_error());
 	

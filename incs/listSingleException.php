@@ -1,6 +1,6 @@
 <?php
-	$id = $_GET["id"];
-	$appid = $_GET["appid"];
+	$id = mysql_real_escape_string($_GET["id"]);
+	$appid = mysql_real_escape_string($_GET["appid"]);
 	
 	$result = mysql_query("SELECT * FROM exceptions WHERE `ID`='$id' AND `App`='$appid'") or die(mysql_error());
 	

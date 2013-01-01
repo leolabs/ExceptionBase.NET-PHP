@@ -2,10 +2,10 @@
 	echo "<table>";
 	echo "<tr class=\"head\"><th>Fehler</th><th>Anzahl</th></tr>";
 	
-	$appid = $_GET["appid"];
+	$appid = mysql_real_escape_string($_GET["appid"]);
 	
 	if(isset($_GET["fixed"])){
-		$fixed = $_GET["fixed"];
+		$fixed = mysql_real_escape_string($_GET["fixed"]);
 	}else{
 		$fixed = "0";
 	}
