@@ -2,7 +2,7 @@
 	include("incs/checkLogin.php");
 	include("incs/database.php");
 	
-	$id = $_GET["id"];
+	$id = mysql_real_escape_string($_GET["id"]);
 	
 	if($_GET["oldstatus"] == "1"){
 		$fixed = 0;
