@@ -1,4 +1,4 @@
-﻿<?php include("incs/checkLogin.php"); include("incs/functiond.php"); include("incs/database.php"); ?>
+﻿<?php include("incs/checkLogin.php"); include("incs/functions.php"); include("incs/database.php"); ?>
 
 <!DOCTYPE html>
 <html>
