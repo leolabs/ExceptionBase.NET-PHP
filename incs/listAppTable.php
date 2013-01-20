@@ -10,7 +10,7 @@
 		}
 		
 		if($_GET["appid"] == $row->ID) echo "<b>";
-		echo "<li><a href=\"?appid=" . $row->ID . "\">" . $row->Name . " ("  . $count .  ")</a></li>\n";
+		echo "<li><a href=\"?appid=" . $row->ID . "\">[" . $row->ID . "] " . $row->Name . " ("  . $count .  ")</a></li>\n";
 		if($_GET["appid"] == $row->ID) echo "</b>";
 	}
 ?>

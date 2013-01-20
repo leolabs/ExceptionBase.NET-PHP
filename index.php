@@ -1,4 +1,4 @@
-﻿<?php include("incs/checkLogin.php"); include("incs/database.php"); ?>
+﻿<?php include("incs/checkLogin.php"); include("incs/functiond.php"); include("incs/database.php"); ?>
 
 <!DOCTYPE html>
 <html>
@@ -42,12 +42,12 @@
 					
 					<div id="filter">
 						<? if(!isset($_GET["id"]) && !isset($_GET["filter"])) { ?>
-							<a href="?">Zurück</a> | (<? if($_GET["sort"] != 1) echo "<b>" ?><a href="?appid=<? echo $_GET["appid"] ?>&fixed=<? echo $_GET["fixed"] ?>&sort=0">Unsortiert</a><? if($_GET["sort"] != 1) echo "</b>" ?> | 
-													  <? if($_GET["sort"] == 1) echo "<b>" ?><a href="?appid=<? echo $_GET["appid"] ?>&fixed=<? echo $_GET["fixed"] ?>&sort=1">Sortiert</a><? if($_GET["sort"] == 1) echo "</b>" ?>) |
-													 (<? if($_GET["fixed"] != 1) echo "<b>" ?><a href="?appid=<? echo $_GET["appid"] ?>&sort=<? echo $_GET["sort"] ?>&fixed=0">Ungelöst</a><? if($_GET["fixed"] != 1) echo "</b>" ?> | 
-													  <? if($_GET["fixed"] == 1) echo "<b>" ?><a href="?appid=<? echo $_GET["appid"] ?>&sort=<? echo $_GET["sort"] ?>&fixed=1">Gelöst</a><? if($_GET["fixed"] == 1) echo "</b>" ?>)
+							<a href="?">Zurück</a> | (<? if(tryGet("sort") != 1) echo "<b>" ?><a href="?appid=<? echo tryGet("appid") ?>&fixed=<? echo tryGet("fixed") ?>&sort=0">Unsortiert</a><? if(tryGet("sort") != 1) echo "</b>" ?> | 
+													  <? if(tryGet("sort") == 1) echo "<b>" ?><a href="?appid=<? echo tryGet("appid") ?>&fixed=<? echo tryGet("fixed") ?>&sort=1">Sortiert</a><? if(tryGet("sort") == 1) echo "</b>" ?>) |
+													 (<? if(tryGet("fixed") != 1) echo "<b>" ?><a href="?appid=<? echo tryGet("appid") ?>&sort=<? echo tryGet("sort") ?>&fixed=0">Ungelöst</a><? if(tryGet("fixed") != 1) echo "</b>" ?> | 
+													  <? if(tryGet("fixed") == 1) echo "<b>" ?><a href="?appid=<? echo tryGet("appid") ?>&sort=<? echo tryGet("sort") ?>&fixed=1">Gelöst</a><? if(tryGet("fixed") == 1) echo "</b>" ?>)
 						<? } else { ?>
-							<a href="?appid=<? echo $_GET["appid"] ?>&fixed=<? echo $_GET["fixed"] ?>&sort=<? echo $_GET["sort"] ?>">Zurück</a> | Fehler - Detailansicht
+							<a href="?appid=<? echo tryGet("appid") ?>&fixed=<? echo tryGet("fixed") ?>&sort=<? echo tryGet("sort") ?>">Zurück</a> | Fehler - Detailansicht
 						<? } ?>					
 						<span style="float: right;">User: <? echo $_SESSION["username"]; ?> | <a href="/logout.php">Logout</a></span>
 					</div>
@@ -59,7 +59,7 @@
 							} else if(isset($_GET["filter"])) {
 								include("incs/listExceptionsByMessage.php");
 							} else {
-								if($_GET["sort"] == 1){
+								if(tryGet("sort") == 1){
 									include("incs/listExceptionsSorted.php");
 								}else{
 									include("incs/listExceptionsUnsorted.php");
